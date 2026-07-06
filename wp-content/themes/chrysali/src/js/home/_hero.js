@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const scroll = document.querySelector(".hero__scroll");
 
-  scroll.addEventListener("click", () => {
+  scroll?.addEventListener("click", () => {
     window.scrollTo({ top: document.querySelector("#about").offsetTop + 60, behavior: "smooth" });
   });
 
