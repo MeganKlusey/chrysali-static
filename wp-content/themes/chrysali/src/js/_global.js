@@ -61,15 +61,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (el) {
       setTimeout(() => {
-        el.scrollIntoView({
+        window.scrollTo({
+          top: el.getBoundingClientRect().top + window.scrollY - 60,
           behavior: "smooth",
-          block: "start",
         });
 
         sessionStorage.removeItem("scrollTarget");
-
-        history.replaceState(null, "", "/");
-      }, 300);
+      }, 200);
     }
   });
 
