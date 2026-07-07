@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (el) window.scrollTo({ top: el.offsetTop + 60, behavior: "smooth" });
       } else {
         sessionStorage.setItem("scrollTarget", target);
-        window.location = "/";
+        window.location.href = "/#scroll";
       }
     });
   });
@@ -55,22 +55,22 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("load", () => {
     const target = sessionStorage.getItem("scrollTarget");
 
-    if (!target || window.location.pathname !== "/") return;
+    if (!target) return;
 
-    requestAnimationFrame(() => {
+    const el = document.querySelector(target);
+
+    if (el) {
       setTimeout(() => {
-        const el = document.querySelector(target);
+        el.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
 
-        if (el) {
-          window.scrollTo({
-            top: el.offsetTop + 60,
-            behavior: "smooth",
-          });
+        sessionStorage.removeItem("scrollTarget");
 
-          sessionStorage.removeItem("scrollTarget");
-        }
-      }, 100);
-    });
+        history.replaceState(null, "", "/");
+      }, 300);
+    }
   });
 
   document.querySelectorAll(".track-click").forEach((link) => {
