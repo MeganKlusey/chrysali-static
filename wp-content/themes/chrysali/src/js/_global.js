@@ -46,8 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const el = document.querySelector(target);
         if (el) window.scrollTo({ top: el.offsetTop + 60, behavior: "smooth" });
       } else {
+        window.location.href = "/";
         sessionStorage.setItem("scrollTarget", target);
-        window.location.href = "/#scroll";
       }
     });
   });
