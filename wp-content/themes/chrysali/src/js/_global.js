@@ -47,25 +47,30 @@ document.addEventListener("DOMContentLoaded", function () {
         if (el) window.scrollTo({ top: el.offsetTop + 60, behavior: "smooth" });
       } else {
         sessionStorage.setItem("scrollTarget", target);
-        window.location.href = "/";
+        window.location.replace("/");
       }
     });
   });
 
-  window.addEventListener("pageshow", () => {
+  window.addEventListener("load", () => {
     const target = sessionStorage.getItem("scrollTarget");
 
     if (target && window.location.pathname === "/") {
-      const el = document.querySelector(target);
+      let attempts = 0;
 
-      if (el) {
-        window.scrollTo({
-          top: el.offsetTop - 60,
-          behavior: "smooth",
-        });
+      const tryScroll = () => {
+        const el = document.querySelector(target);
 
-        sessionStorage.removeItem("scrollTarget");
-      }
+        if (el) {
+          window.scrollTo({ top: el.offsetTop + 60, behavior: "smooth" });
+          sessionStorage.removeItem("scrollTarget");
+        } else if (attempts < 10) {
+          attempts++;
+          setTimeout(tryScroll, 100);
+        }
+      };
+
+      tryScroll();
     }
   });
 
