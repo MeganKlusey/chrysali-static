@@ -55,23 +55,22 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("load", () => {
     const target = sessionStorage.getItem("scrollTarget");
 
-    if (target && window.location.pathname === "/") {
-      let attempts = 0;
+    if (!target || window.location.pathname !== "/") return;
 
-      const tryScroll = () => {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
         const el = document.querySelector(target);
 
         if (el) {
-          window.scrollTo({ top: el.offsetTop + 60, behavior: "smooth" });
-          sessionStorage.removeItem("scrollTarget");
-        } else if (attempts < 10) {
-          attempts++;
-          setTimeout(tryScroll, 100);
-        }
-      };
+          window.scrollTo({
+            top: el.offsetTop + 60,
+            behavior: "smooth",
+          });
 
-      tryScroll();
-    }
+          sessionStorage.removeItem("scrollTarget");
+        }
+      }, 100);
+    });
   });
 
   document.querySelectorAll(".track-click").forEach((link) => {
