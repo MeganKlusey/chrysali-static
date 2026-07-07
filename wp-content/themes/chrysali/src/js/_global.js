@@ -40,34 +40,32 @@ document.addEventListener("DOMContentLoaded", function () {
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      const target = link.getAttribute("data-href");
+
+      const target = link.dataset.href;
 
       if (window.location.pathname === "/") {
         const el = document.querySelector(target);
-        if (el) window.scrollTo({ top: el.offsetTop + 60, behavior: "smooth" });
+
+        if (el) {
+          window.scrollTo({
+            top: el.getBoundingClientRect().top + window.scrollY - 60,
+            behavior: "smooth",
+          });
+        }
       } else {
-        window.location.href = "/";
-        sessionStorage.setItem("scrollTarget", target);
+        window.location.href = `/${target}`;
       }
     });
   });
 
   window.addEventListener("load", () => {
-    const target = sessionStorage.getItem("scrollTarget");
-
-    if (!target) return;
-
-    const el = document.querySelector(target);
+    const el = document.querySelector(window.location.hash);
 
     if (el) {
-      setTimeout(() => {
-        window.scrollTo({
-          top: el.getBoundingClientRect().top + window.scrollY - 60,
-          behavior: "smooth",
-        });
-
-        sessionStorage.removeItem("scrollTarget");
-      }, 200);
+      window.scrollTo({
+        top: el.getBoundingClientRect().top + window.scrollY - 60,
+        behavior: "smooth",
+      });
     }
   });
 
