@@ -1,4 +1,38 @@
 document.addEventListener("DOMContentLoaded", async function () {
+  const contactForm = document.getElementById("contact-form");
+
+  if (contactForm) {
+    const submitButton = document.getElementById("contact-submit");
+
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      submitButton.disabled = true;
+
+      const formData = new FormData(contactForm);
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          window.location.href = "/contact?submitted=true";
+          return;
+        }
+
+        throw new Error(result.message);
+      } catch (error) {
+        console.error(error);
+        alert("Sorry, something went wrong. Please try again.");
+        submitButton.disabled = false;
+      }
+    });
+  }
+
   gsap.registerPlugin(SplitText);
 
   await document.fonts.ready;

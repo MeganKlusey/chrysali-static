@@ -109,7 +109,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 								hello@chrysali.co								<span class="js-roll-arrow">
 <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16">
 	<defs>
-		<lineargradient id="path-6a4c40ab4f8f1" x1="0%" y1="0%" x2="100%" y2="100%">
+		<lineargradient id="path-6a4d1aa6791ca" x1="0%" y1="0%" x2="100%" y2="100%">
 			<stop offset="0%" stop-color="#e6d321"></stop>
 			<stop offset="50%" stop-color="#f9fceb"></stop>
 			<stop offset="100%" stop-color="#d3af37"></stop>
@@ -124,42 +124,50 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				</div>
 			</div>
 			<div class="contact__form-container">
-				<form class="contact__form" method="POST" action="/wp-admin/admin-post.php">
-					<input type="hidden" name="action" value="contact_form_submit">
+				<form class="contact__form" id="contact-form">
+					<input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+					<input type="hidden" name="subject" value="New enquiry from Chrysali website">
+					<input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
 					<div class="contact__form-inputs">
 						<div class="contact__form-input-container">
-							<input type="text" class="contact__form-input contact__form-name text-base" name="contact__form-name" placeholder="Full name*" required>
+							<input type="text" class="contact__form-input contact__form-name text-base" name="name" placeholder="Full name*" required>
 						</div>
+
 						<div class="contact__form-input-container">
-							<input type="email" class="contact__form-input contact__form-email text-base" name="contact__form-email" placeholder="Email*" required>
+							<input type="email" class="contact__form-input contact__form-email text-base" name="email" placeholder="Email*" required>
 						</div>
+
 						<div class="contact__form-input-container">
-							<input type="text" class="contact__form-input contact__form-company text-base" name="contact__form-company" placeholder="Company name (optional)">
+							<input type="text" class="contact__form-input contact__form-company text-base" name="company" placeholder="Company name (optional)">
 						</div>
+
 						<div>
 							<div class="contact__form-input-container">
-								<textarea class="contact__form-input contact__form-details text-base" name="contact__form-details" placeholder="Your message*" maxlength="2000" required></textarea>
+								<textarea class="contact__form-input contact__form-details text-base" name="message" placeholder="Your message*" maxlength="2000" required></textarea>
 							</div>
-							<p class="text-xs contact__form-character-limit"><span class="contact__form-character-count">0</span> /
-								2000
+
+							<p class="text-xs contact__form-character-limit">
+								<span class="contact__form-character-count">0</span> / 2000
 							</p>
 						</div>
 					</div>
-					<button class="contact__form-submit text-3xl" type="submit">
+
+					<button class="contact__form-submit text-3xl" id="contact-submit" type="submit">
 						<span>Send message</span>
 						<div class="js-roll-arrow-container">
 							<span class="js-roll-arrow">
 								
 <svg class="arrow secondary" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16">
 	<defs>
-		<lineargradient id="path-6a4c40ab4f8f8" x1="0%" y1="0%" x2="100%" y2="100%">
+		<lineargradient id="path-6a4d1aa6791d0" x1="0%" y1="0%" x2="100%" y2="100%">
 			<stop offset="0%" stop-color="#e6d321"></stop>
 			<stop offset="50%" stop-color="#f9fceb"></stop>
 			<stop offset="100%" stop-color="#d3af37"></stop>
 		</lineargradient>
 	</defs>
 
-	<path d="M5.08316 4.55289H11.4471V10.9169M11.0052 4.99483L4.55283 11.4472" stroke="url(#path-6a4c40ab4f8f8)" stroke-linecap="square" stroke-miterlimit="10" stroke-width="1.5"></path>
+	<path d="M5.08316 4.55289H11.4471V10.9169M11.0052 4.99483L4.55283 11.4472" stroke="url(#path-6a4d1aa6791d0)" stroke-linecap="square" stroke-miterlimit="10" stroke-width="1.5"></path>
 </svg>							</span>
 						</div>
 					</button>
@@ -170,7 +178,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					<a href="mailto:hello@chrysali.co" class="contact__offsite-link text-xs" target="_blank">hello@chrysali.co						<span class="js-roll-arrow">
 <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16">
 	<defs>
-		<lineargradient id="path-6a4c40ab4f916" x1="0%" y1="0%" x2="100%" y2="100%">
+		<lineargradient id="path-6a4d1aa6791d6" x1="0%" y1="0%" x2="100%" y2="100%">
 			<stop offset="0%" stop-color="#e6d321"></stop>
 			<stop offset="50%" stop-color="#f9fceb"></stop>
 			<stop offset="100%" stop-color="#d3af37"></stop>
@@ -233,7 +241,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/chrysali/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script id="chrysali-js-js" src="/wp-content/themes/chrysali/dist/assets/main-Dw6vP_4q.js"></script>
+<script id="chrysali-js-js" src="/wp-content/themes/chrysali/dist/assets/main-B90HbA8h.js"></script>
 <script id="gsap-js-js" src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js?ver=7.0"></script>
 <script id="gsap-st-js" src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/SplitText.min.js?ver=7.0"></script>
 <script id="gsap-str-js" src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js?ver=7.0"></script>
@@ -248,4 +256,4 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 </script>
 </body>
 
-</html><!-- Page supported by LiteSpeed Cache 7.8.1 on 2026-07-06 23:56:27 -->
+</html><!-- Page supported by LiteSpeed Cache 7.8.1 on 2026-07-07 15:26:30 -->
