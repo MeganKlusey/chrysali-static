@@ -47,13 +47,14 @@ document.addEventListener("DOMContentLoaded", function () {
         if (el) window.scrollTo({ top: el.offsetTop + 60, behavior: "smooth" });
       } else {
         sessionStorage.setItem("scrollTarget", target);
-        window.location.href = "/";
+        window.location.href = "/?scroll=" + target.substring(1);
       }
     });
   });
 
   window.addEventListener("load", () => {
-    const target = sessionStorage.getItem("scrollTarget");
+    const params = new URLSearchParams(window.location.search);
+    const target = sessionStorage.getItem("scrollTarget") || (params.get("scroll") ? "#" + params.get("scroll") : null);
 
     if (target && window.location.pathname === "/") {
       let attempts = 0;
