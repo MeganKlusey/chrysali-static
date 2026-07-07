@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (el) window.scrollTo({ top: el.offsetTop + 60, behavior: "smooth" });
       } else {
         sessionStorage.setItem("scrollTarget", target);
-        window.location.href = "/";
+        window.location = "/";
       }
     });
   });
