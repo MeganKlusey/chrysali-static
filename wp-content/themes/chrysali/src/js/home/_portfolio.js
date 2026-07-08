@@ -29,37 +29,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       autoAlpha: 0,
       duration: 0.8,
     });
-
-    tl.from(
-      title,
-      {
-        y: 10,
-        autoAlpha: 0,
-        duration: 0.4,
-      },
-      "<0.15",
-    )
-      .from(
-        roleSplit.lines,
-        {
-          y: 10,
-          autoAlpha: 0,
-          duration: 0.4,
-        },
-        "<0.15",
-      )
-      .from(
-        bulletPoints,
-        {
-          y: 10,
-          autoAlpha: 0,
-          duration: 0.4,
-          stagger: 0.1,
-          "--bullet-y": 10,
-          "--bullet-opacity": 1,
-        },
-        "<0.15",
-      );
   });
 
   ScrollTrigger.refresh();

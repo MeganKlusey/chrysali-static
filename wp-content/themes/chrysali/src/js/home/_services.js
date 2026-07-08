@@ -86,42 +86,4 @@ document.addEventListener("DOMContentLoaded", async function () {
     items[0].classList.add("active");
     infoDesktop[0].classList.add("active");
   }
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  await document.fonts.ready;
-
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".services__list-item",
-      start: "top 85%",
-    },
-  });
-
-  gsap.from(".services__title", {
-    scrollTrigger: {
-      trigger: ".services__title",
-      start: "top 85%",
-    },
-    duration: 0.8,
-    y: 10,
-    autoAlpha: 0,
-  });
-
-  tl.from(".services__list-item", {
-    duration: 0.8,
-    y: 10,
-    autoAlpha: 0,
-    stagger: 0.04,
-  }).from(
-    ".services__info",
-    {
-      duration: 0.8,
-      y: 10,
-      autoAlpha: 0,
-    },
-    0.2,
-  );
-
-  ScrollTrigger.refresh();
 });
