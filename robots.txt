@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /wp-admin/
 Allow: /wp-admin/admin-ajax.php
 
-Sitemap: http://localhost:10008/sitemap_index.xml
+Sitemap: https://chrysali.co/sitemap_index.xml

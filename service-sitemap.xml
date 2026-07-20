@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://chrysali.co/main-sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>/service/</loc>
+		<loc>https://chrysali.co/service/</loc>
 		<lastmod>2026-04-12T22:04:38+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/service/support/</loc>
+		<loc>https://chrysali.co/service/support/</loc>
 		<lastmod>2026-04-12T22:04:38+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/service/development/</loc>
+		<loc>https://chrysali.co/service/development/</loc>
 		<lastmod>2026-04-12T21:25:01+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/service/discovery/</loc>
+		<loc>https://chrysali.co/service/discovery/</loc>
 		<lastmod>2026-04-12T21:13:47+00:00</lastmod>
 	</url>
 </urlset>
