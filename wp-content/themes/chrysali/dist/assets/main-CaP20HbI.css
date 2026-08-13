@@ -1304,6 +1304,7 @@ button .js-roll-arrow-container .js-roll-arrow:has(.small):after {
 @media screen and (min-width: 768px) {
   .contact .wrapper-padding {
     padding: 10.25rem var(--xxlarge) var(--p-large) var(--xxlarge);
+    height: 100vh;
   }
 }
 .contact .wrapper-padding .wrapper {
