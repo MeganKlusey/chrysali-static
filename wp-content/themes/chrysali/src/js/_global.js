@@ -61,18 +61,17 @@ document.addEventListener("DOMContentLoaded", function () {
       if (window.location.pathname === "/") {
         scrollToTarget(target);
       } else {
-        sessionStorage.setItem("scrollTarget", target);
-        window.location.href = "/";
+        window.location.href = `/${target}`;
       }
     });
   });
 
-  window.addEventListener("pageshow", () => {
-    const target = sessionStorage.getItem("scrollTarget");
+  window.addEventListener("load", () => {
+    const target = window.location.hash;
 
     if (!target) return;
 
-    sessionStorage.removeItem("scrollTarget");
+    history.replaceState(null, "", window.location.pathname);
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
