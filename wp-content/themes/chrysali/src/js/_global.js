@@ -40,11 +40,20 @@ document.addEventListener("DOMContentLoaded", function () {
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
+
       const target = link.getAttribute("data-href");
 
-      if (window.location.pathname === "/") {
+      const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("/index.html");
+
+      if (isHomePage) {
         const el = document.querySelector(target);
-        if (el) window.scrollTo({ top: el.offsetTop + 60, behavior: "smooth" });
+
+        if (el) {
+          window.scrollTo({
+            top: el.offsetTop + 60,
+            behavior: "smooth",
+          });
+        }
       } else {
         sessionStorage.setItem("scrollTarget", target);
         window.location.href = "/";
@@ -55,22 +64,23 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("load", () => {
     const target = sessionStorage.getItem("scrollTarget");
 
-    if (target && window.location.pathname === "/") {
-      let attempts = 0;
+    const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("/index.html");
 
+    if (target && isHomePage) {
       const tryScroll = () => {
         const el = document.querySelector(target);
 
         if (el) {
-          window.scrollTo({ top: el.offsetTop + 60, behavior: "smooth" });
+          window.scrollTo({
+            top: el.offsetTop + 60,
+            behavior: "smooth",
+          });
+
           sessionStorage.removeItem("scrollTarget");
-        } else if (attempts < 10) {
-          attempts++;
-          setTimeout(tryScroll, 100);
         }
       };
 
-      tryScroll();
+      setTimeout(tryScroll, 100);
     }
   });
 
