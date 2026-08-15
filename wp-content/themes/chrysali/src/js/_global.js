@@ -10,6 +10,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const links = document.querySelectorAll(".js-scroll-link");
 
+  const getScrollPosition = (el) => {
+    return window.innerWidth >= 1024 ? el.offsetTop + 60 : el.offsetTop;
+  };
+
+  const scrollToTarget = (target, behavior = "smooth") => {
+    const el = document.querySelector(target);
+
+    if (!el) return;
+
+    window.scrollTo({
+      top: getScrollPosition(el),
+      behavior,
+    });
+  };
+
   textLinks.forEach((textLink, index) => {
     textLink.addEventListener("mouseenter", () => {
       text[index].style.transform = "translateY(-100%)";
@@ -43,17 +58,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const target = link.getAttribute("data-href");
 
-      const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("/index.html");
-
-      if (isHomePage) {
-        const el = document.querySelector(target);
-
-        if (el) {
-          window.scrollTo({
-            top: el.offsetTop + 60,
-            behavior: "smooth",
-          });
-        }
+      if (window.location.pathname === "/") {
+        scrollToTarget(target);
       } else {
         sessionStorage.setItem("scrollTarget", target);
         window.location.href = "/";
@@ -61,27 +67,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  window.addEventListener("load", () => {
+  window.addEventListener("pageshow", () => {
     const target = sessionStorage.getItem("scrollTarget");
 
-    const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("/index.html");
+    if (!target) return;
 
-    if (target && isHomePage) {
-      const tryScroll = () => {
-        const el = document.querySelector(target);
+    sessionStorage.removeItem("scrollTarget");
 
-        if (el) {
-          window.scrollTo({
-            top: el.offsetTop + 60,
-            behavior: "smooth",
-          });
-
-          sessionStorage.removeItem("scrollTarget");
-        }
-      };
-
-      setTimeout(tryScroll, 100);
-    }
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        scrollToTarget(target);
+      });
+    });
   });
 
   document.querySelectorAll(".track-click").forEach((link) => {
